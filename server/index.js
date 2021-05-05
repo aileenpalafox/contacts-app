@@ -5,6 +5,11 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 4000;
 const path = require('path');
+const router = express.Router();
+router.get('/', (req, res) => {
+    res.send('hello world')
+});
+
 
 app.use(cors());
 app.use(bodyParser.json());
