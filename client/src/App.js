@@ -9,7 +9,7 @@ class App extends Component {
             <Router>
                 <div className="container">
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                        <Link to="/" className="navbar-brand">Mern Easy Boilerplate</Link>
+                        <Link to="/" className="navbar-brand">Mern Easy Boilerplate-Testing refresh</Link>
                         <div className="collpase navbar-collapse">
                             <ul className="navbar-nav mr-auto">
                                 <li className="navbar-item">
