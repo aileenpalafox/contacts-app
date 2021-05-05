@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const PORT = process.env.PORT || 4000;
 const path = require('path');
 const router = express.Router();
-router.get('/', (req, res) => {
+router.get('/api', (req, res) => {
     res.send('hello world')
 });
 
@@ -23,12 +23,12 @@ connection.once('open', function () {
     console.log("MongoDB database connection established successfully");
 })
 
-/*if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
-}*/
+}
 
 
 app.listen(PORT, function () {
