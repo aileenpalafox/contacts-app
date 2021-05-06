@@ -1,4 +1,4 @@
-#Contacts app
+# Contacts app
 
 This project is a simple contacts web app that allows the user to create, see, edit and delete their contacts.
 
