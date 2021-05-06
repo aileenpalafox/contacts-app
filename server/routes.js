@@ -3,7 +3,8 @@ const {getContacts,newContact,deleteContact,updateContact} = require("./controll
 module.exports=(router)=>{
     //read contacts from mongodb
     router.get("/contacts",function (req,res){
-       getContacts(res)
+        console.log(req.query)
+       getContacts(req,res)
     })
     //write contacts
     router.post("/",function(req,res){

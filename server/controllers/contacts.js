@@ -2,8 +2,8 @@
 const Contacts = require('../schema/index.js')
 
 //traer contactos de la base de datos
-function getContacts (res){
-    const allcontacts = Contacts.find({}).then(contacts=>{
+function getContacts (req,res){
+    const allcontacts = Contacts.find(req.query).then(contacts=>{
         res.json(contacts)}).catch(err=>console.log(err))
 }
 
