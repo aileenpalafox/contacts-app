@@ -6,9 +6,9 @@ const mongoose = require('mongoose');
 const PORT = process.env.PORT || 4000;
 const path = require('path');
 const router = express.Router();
-router.get('/api', (req, res) => {
-    res.send('hello world')
-});
+//call routes to BE
+const handler = require("./routes")
+handler(router)
 
 app.use(cors());
 app.use(bodyParser.json());
