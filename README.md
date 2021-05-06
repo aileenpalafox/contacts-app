@@ -1,6 +1,6 @@
-# MERN - Easy Boilerplate for Deployment to Heroku
+This project is a simple contacts web app that allows the user to create, see, edit and delete their contacts.
 
-This project is a simple full-stack boilerplate for easing up the deployment of a full-stack project to heroku.
+Its skeleton is based in the fullstack boilerplate by BurakDmb that you can check out [here](https://github.com/BurakDmb/MERN-EasyBoilerplate).
 
 It uses MERN stack:
 - MongoDB
@@ -8,19 +8,11 @@ It uses MERN stack:
 - React
 - NodeJS
 
-
-### Running in development environment:
- - ```
-   npm install
-   npm run client-install
-   npm run dev
+### For running in development environment:
+ - Install mongoDB and create a simple database or create a cloud based one (I recommend [this](https://www.mongodb.com/cloud))
+ -  ```npm run start
    ```
    
-### Deploying into production environment(Heroku):
-- Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-- ```heroku login```
-- ```heroku create```
-- ```heroku git:remote -a <HerokuProjectName>```(Replace \<HerokuProjectName> with your heroku project name)
-- ```git push heroku master```
-   
-
+### For deploying into production environment(Heroku) using GitHub:
+- Fork this repo or clone it and upload it to your account.
+- For Heroku deployment follow this [easy tutorial](https://www.youtube.com/watch?v=QUvxrzINj5Q).
