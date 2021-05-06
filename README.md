@@ -10,8 +10,7 @@ It uses MERN stack:
 
 ### For running in development environment:
  - Install mongoDB and create a simple database or create a cloud based one (I recommend [this](https://www.mongodb.com/cloud))
- -  ```npm run start
-   ```
+ -  ```npm run start´´´
    
 ### For deploying into production environment(Heroku) using GitHub:
 - Fork this repo or clone it and upload it to your account.
