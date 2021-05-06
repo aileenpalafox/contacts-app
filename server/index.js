@@ -8,7 +8,6 @@ const path = require('path');
 const router = express.Router();
 //call routes to BE
 const handler = require("./routes")
-handler(router)
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -22,6 +21,8 @@ const connection = mongoose.connection;
 connection.once('open', function () {
     console.log("MongoDB database connection established successfully");
 })
+
+handler(router)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));

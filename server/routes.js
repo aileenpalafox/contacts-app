@@ -1,17 +1,21 @@
-/*
-const express = require('express')
-const app = express()
-
-app.get('/', function (req, res) {
-    res.send('hello world')
-})
-
-app.listen(3000)*/
+const {getContacts,newContact,deleteContact,updateContact} = require("./controllers/contacts.js")
 
 module.exports=(router)=>{
-    //read json with info
+    //read contacts from mongodb
     router.get("/contacts",function (req,res){
-        const contacts = require("./stubs/contacts.json")
-        res.json(contacts)
+       getContacts(res)
+    })
+    //write contacts
+    router.post("/",function(req,res){
+        newContact(req,res)
+    })
+    //delete contacts
+    router.delete("/:id",function (req,res){
+        //res.send(req.params.id)
+        deleteContact(req,res)
+    })
+    router.put("/:id",function (req,res){
+        //res.send(req.params.id)
+        updateContact(req,res)
     })
 }
