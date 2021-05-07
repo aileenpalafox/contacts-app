@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Link} from "react-router-dom";
+import {ContactList, Forms} from "./components";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -21,7 +22,8 @@ class App extends Component {
                             </ul>
                         </div>
                     </nav>
-                    <br/>
+                    <ContactList />
+                    <Forms/>
                 </div>
             </Router>
         );
