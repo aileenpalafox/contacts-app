@@ -12,8 +12,8 @@ const handler = require("./routes")
 app.use(cors());
 app.use(bodyParser.json());
 app.use(router);
-const uristring = System.getenv("URI")
-//const uristring = "mongodb+srv://admin:admin@cluster0.mywe7.mongodb.net/agenda?retryWrites=true&w=majority";
+
+const uristring = "mongodb+srv://admin:admin@cluster0.mywe7.mongodb.net/agenda?retryWrites=true&w=majority";
 
 mongoose.connect(uristring, {useNewUrlParser: true});
 
