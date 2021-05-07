@@ -1,12 +1,29 @@
 import React from 'react';
 
+class DeleteButton extends React.Component{
+    constructor() {
+        super();
+        this.deleteContact=this.deleteContact.bind(this)
+    }
+    deleteContact(event){
+        fetch('https://contacts-app-aileen.herokuapp.com/'+this.props.id,{method:"delete"})
+            .then((response) => response.json())
+            .then(({message}) => this.setState({ message }))
+    }
+    render() {
+        return (
+            <button onClick={this.deleteContact}>Delete</button>
+        );
+    }
+}
+
 class Contact extends React.Component {
     render () {
         const contact = this.props.contact
         // contact._id <- vamos a identificar al contacto
         return (
             <div>
-                <button>Editar</button>
+                <button>Edit</button>
                 <ul>
                     <li>{contact.name}</li>
                     <li>{contact.lastname}</li>
@@ -14,7 +31,7 @@ class Contact extends React.Component {
                     <li>{contact.phone}</li>
                     <li>{contact.email}</li>
                 </ul>
-                <button>Borrar</button>
+                <DeleteButton id={contact._id}/>
             </div>
         )
     }
@@ -47,13 +64,14 @@ export class Forms extends React.Component{
     constructor() {
         super()
         this.state = {
-            name:"",lastname:"",company:"",phone:"",email:""
+            name:"",lastname:"",company:"",phone:"",email:"",message:""
         }
         this.changeName = this.changeName.bind(this);
         this.changeLastname = this.changeLastname.bind(this);
         this.changeCompany = this.changeCompany.bind(this);
         this.changePhone = this.changePhone.bind(this);
         this.changeEmail = this.changeEmail.bind(this);
+        this.submitForm = this.submitForm.bind(this);
     }
     //update data in the UI
     changeName(event){
@@ -76,11 +94,19 @@ export class Forms extends React.Component{
         const email = event.target.value
         this.setState({email})
     }
-    submitForm(){}
+    //post contact info to database
+    submitForm(event){
+        event.preventDefault()
+        fetch('http://localhost:4000',{method:"post",headers:{
+            "Content-Type":"application/json"
+            },body:JSON.stringify(this.state)})
+            .then((response) => response.json())
+            .then(({message}) => this.setState({ message }))
+    }
     render(){
         const form = this.props.form
         return(
-            <form>
+            <form onSubmit={this.submitForm}>
                 <div>
                     <label>Name: </label>
                     <input type="text" name="name" value={this.state.name} required onChange={this.changeName}/>
@@ -104,8 +130,10 @@ export class Forms extends React.Component{
                 <div>
                     <input type="submit" value="Submit"/>
                 </div>
+                {
+                    this.state.message?<div>{this.state.message}</div>:null
+                }
             </form>
-
         )
     }
 }

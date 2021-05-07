@@ -12,9 +12,16 @@ const validateLetters = function(name) {
 };
 
 const validateAlphanumeric = function(value){
+    if (!value){return true}
     var regex = /^[a-z1-9]+$/i;
     return  regex.test(value)
 };
+
+const validateNumbers = function (value){
+    if (!value){return true}
+    var regex = /^[\d]{10}$/;
+    return regex.test(value)
+}
 
 const contactsSchema = new Schema({
     name:  {
@@ -42,12 +49,10 @@ const contactsSchema = new Schema({
     phone: {
         type:Number,
         unique: true,
-        sparse: true,
-        validate : {
-            validator : Number.isInteger,
-            message   : 'Phone should contain only numbers'
-        },
-        maxLength: [15, 'Number is too long']
+        index:true,
+        sparse:true,
+        required: "Phone is required",
+        validate : [validateNumbers,'Phone should contain 10 numbers']
     },
     email: {
         type: String,
