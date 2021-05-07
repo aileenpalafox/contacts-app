@@ -49,8 +49,6 @@ const contactsSchema = new Schema({
     phone: {
         type:Number,
         unique:true,
-        //index: {
-         //   partialFilterExpression: {phone: {$type: {"number":""}}}},
         validate : [validateNumbers,'Phone should contain 10 numbers']
     },
     email: {

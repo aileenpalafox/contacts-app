@@ -110,20 +110,30 @@ export class Forms extends React.Component{
     //post contact info to database
     submitForm(event){
         event.preventDefault()
+        const { name, lastname, company, phone, email } = this.props.contact
+        const data = {
+            name, lastname, company, email
+        }
+        if (phone) {
+            data.phone = phone
+        }
+
+        //if has id, it exists, then update contact information
         if (this.props.contact._id) {
             fetch('https://contacts-app-aileen.herokuapp.com/' + this.props.contact._id ,{method:"put",headers:{
                     "Content-Type":"application/json"
-                },body:JSON.stringify(this.props.contact)})
+                },body:JSON.stringify(data)})
                 .then((response) => response.json())
                 .then(({message}) => {
                     this.setState({ message })
                     this.props.getContacts()
                     this.resetForm()
                 })
+            //if not then create new contact
         } else {
             fetch('https://contacts-app-aileen.herokuapp.com/',{method:"post",headers:{
                     "Content-Type":"application/json"
-                },body:JSON.stringify(this.props.contact)})
+                },body:JSON.stringify(data)})
                 .then((response) => response.json())
                 .then(({message}) => {
                     this.setState({ message })
