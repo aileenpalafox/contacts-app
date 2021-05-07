@@ -5,6 +5,18 @@ import {ContactList, Forms} from "./components";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
+    constructor() {
+        super()
+        this.state = {
+            name:"",lastname:"",company:"",phone:"",email:"",message:""
+        }
+        this.changeContact = this.changeContact.bind(this)
+    }
+
+
+    changeContact(contact) {
+        this.setState(contact)
+    }
     render() {
         return (
             <Router>
@@ -22,8 +34,8 @@ class App extends Component {
                             </ul>
                         </div>
                     </nav>
-                    <ContactList />
-                    <Forms/>
+                    <ContactList updateContact={this.changeContact}/>
+                    <Forms contact={this.state} updateContact={this.changeContact}/>
                 </div>
             </Router>
         );
