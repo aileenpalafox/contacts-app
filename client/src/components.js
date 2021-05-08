@@ -117,8 +117,7 @@ export class Forms extends React.Component{
         if (phone) {
             data.phone = phone
         }
-
-        //if has id, it exists, then update contact information
+     //if has id, it exists, then update contact information
         if (this.props.contact._id) {
             fetch('https://contacts-app-aileen.herokuapp.com/' + this.props.contact._id ,{method:"put",headers:{
                     "Content-Type":"application/json"
