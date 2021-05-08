@@ -14,7 +14,6 @@ app.use(bodyParser.json());
 app.use(router);
 
 const uristring = process.env.MONGODB_URI;
-//const uristring = "mongodb+srv://admin:admin@cluster0.mywe7.mongodb.net/agenda?retryWrites=true&w=majority";
 
 mongoose.connect(uristring, {useNewUrlParser: true});
 
