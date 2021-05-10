@@ -17,6 +17,12 @@ const validateNumbers = function (value){
     return regex.test(value)
 }
 
+const validateAlphanumeric = function(value){
+    if (!value){return true}
+    var regex = /^[a-z\d\-_\s]+$/i;
+    return  regex.test(value)
+};
+
 const contactsSchema = new Schema({
     name:  {
         type: String,
@@ -37,7 +43,8 @@ const contactsSchema = new Schema({
     company:   {
         type: String,
         trim: true,
-        maxLength: [20, 'Company is too long']
+        maxLength: [20, 'Company is too long'],
+        validate: [validateAlphanumeric, 'Company should contain letters and numbers']
     },
     phone: {
         type:Number,
