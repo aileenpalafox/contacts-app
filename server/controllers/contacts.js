@@ -54,7 +54,7 @@ function deleteContact (req,res){
 }
 
 function updateContact(req,res){
-    if (validateLetters(req.body.name)&&validateLetters(req.body.lastname)&&validateAlphanumeric(req.body.company)&&validateNumbers(req.body.phone)&&validateEmail(req.body.email)){
+    if (validateLetters(req.body.name)&&validateLetters(req.body.lastname)&&validateNumbers(req.body.phone)&&validateEmail(req.body.email)){
         const id=req.params.id;
         const upcontact = Contacts.findByIdAndUpdate(id,req.body, {new:true}).then(()=>res.json({message:"Updated contact"})) .catch(err => res.status(400).json({
             "error": err,

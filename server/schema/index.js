@@ -11,12 +11,6 @@ const validateLetters = function(name) {
     return re.test(name)
 };
 
-const validateAlphanumeric = function(value){
-    if (!value){return true}
-    var regex = /^[a-z1-9]+$/i;
-    return  regex.test(value)
-};
-
 const validateNumbers = function (value){
     if (!value){return true}
     var regex = /^[\d]{10}$/;
@@ -43,8 +37,7 @@ const contactsSchema = new Schema({
     company:   {
         type: String,
         trim: true,
-        validate: [validateAlphanumeric, 'Company should contain only letters and numbers'],
-        maxLength: [70, 'Lastname is too long']
+        maxLength: [20, 'Company is too long']
     },
     phone: {
         type:Number,
@@ -57,7 +50,7 @@ const contactsSchema = new Schema({
         lowercase: true,
         unique: true,
         required: 'Email address is required',
-        maxLength: [70, 'Lastname is too long'],
+        maxLength: [30, 'Email address is too long'],
         validate: [validateEmail, 'Email should have the format email@company.some '],
     }
 });
