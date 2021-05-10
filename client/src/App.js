@@ -26,7 +26,7 @@ class App extends Component {
     }
 
     getContacts(){
-        fetch(`https://contacts-app-aileen.herokuapp.com//contacts?limit=10&skip=${this.state.skip}`)
+        fetch(`https://contacts-app-aileen.herokuapp.com/contacts?limit=10&skip=${this.state.skip}`)
             .then((response) => response.json())
             .then((contacts) => this.setState({ contacts }))
     }

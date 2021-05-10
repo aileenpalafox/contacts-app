@@ -165,14 +165,14 @@ export class Forms extends React.Component{
                     <label className = "form-label">Email: </label>
                     <input className="form-control" type="email" name="email" value={this.props.contact.email} required onChange={this.changeEmail}/>
                 </div>
-                <div className="btn-group">
-                    <input className="btn btn-primary" type="submit" value="Submit"/>
+                <div>
+                    <input className="btn btn-primary m-1" type="submit" value="Submit"/>
                     {
-                        this.props.contact._id ? <button className="btn btn-warning" onClick={this.resetForm}>Reset</button> : null
+                        this.props.contact._id ? <button className="btn btn-warning m-1" onClick={this.resetForm}>Reset</button> : null
                     }
                 </div>
                 {
-                    this.state.message?<div>{this.state.message} <span onClick={this.closeMessage}>x</span></div>:null
+                    this.state.message?<div className="badge badge-light m-4">{this.state.message} <span className="badge badge-light" onClick={this.closeMessage}>x</span></div>:null
                 }
 
             </form>
