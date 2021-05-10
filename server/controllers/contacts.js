@@ -26,8 +26,10 @@ const validateNumbers = function (value){
 
 //traer contactos de la base de datos
 function getContacts (req,res){
-    const allcontacts = Contacts.find(req.query).then(contacts=>{
-        res.json(contacts)}).catch(err=>console.log(err))
+        const limit = parseInt(req.query.limit); // Make sure to parse the limit to number
+        const skip = parseInt(req.query.skip);// Make sure to parse the skip to number
+        const contacts = Contacts.find({}).skip(skip).limit(limit).then(contacts=>{
+            res.json(contacts)}).catch(err=>console.log(err))
 }
 
 function newContact (req,res){
